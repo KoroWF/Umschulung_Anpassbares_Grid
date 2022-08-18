@@ -1,0 +1,40 @@
+﻿<Window x:Class="WpfApp1.BuchNeu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="BuchNeu" Height="450" Width="800">
+    
+    <Window.Resources>
+        <ResourceDictionary Source="CSS_BuchNeu.xaml"/>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="60*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="Titel"/>
+        <Label Grid.Row="1" Grid.Column="0" Content="Bild" />
+        <Label Grid.Row="2" Grid.Column="0" Content="Preis" />
+        <Label Grid.Row="3" Grid.Column="0" Content="Inhalt"/>
+
+        <TextBox Name="txtTitel" Grid.Row="0" Grid.Column="1"/>
+        <Button Name="btnBild" Content="Bild auswählen" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Click="btnBild_Click" Margin="0,0,10,0" Width="100" Height="25"/>
+        <Image Name="bild" Grid.Row="1" Grid.Column="1" Width="80" Margin="0" Stretch="Uniform"  HorizontalAlignment="Center"/>
+        <TextBox Name="txtPreis" Grid.Row="2" Grid.Column="1"/>
+        <TextBox Name="txtInhalt" Grid.Row="3" Grid.Column="1" TextChanged="txtInhalt_TextChanged"/>
+        <Button Name="btnsspeichern" Content="Speichern" Grid.Row="4" Grid.Column="1" Click="btnsspeichern_Click"/>
+    </Grid>
+
+</Window>

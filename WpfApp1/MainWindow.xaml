@@ -1,0 +1,46 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <!-- Einteilung in 2 Spalten / * für gleiche breite (50* - 50%) -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!-- in der 1. Spalte befindet sich eine Liste mit allen Büchern -->
+        <ListView Grid.Column="0" Name="ListAnzeige" ItemsSource="{Binding}" Margin="10" SelectionChanged="ListAnzeige_SelectionChanged">
+            <!-- wir legen fest, wie ein Element in der liste angezeigt werden soll -->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding Bild}" Width="80" Stretch="Uniform" />
+                        <StackPanel Orientation="Vertical">
+                        <Label Content="{Binding Titel}" FontWeight="Bold" FontSize="16"/>
+                        <Label Content="{Binding Preis}" Foreground="red" />
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel Grid.Column="1" Orientation="Vertical">
+            <Label Content="Titel"/>
+            <TextBox Name="txtTitel" Text="{Binding Titel}" KeyUp="txtTitel_KeyUp" Margin="10"/>
+            <Label Content="Preis"/>
+            <TextBox Name="txtPreis" Text="{Binding Preis}" KeyUp="txtPreis_KeyUp" Margin="10"/>
+            <Label Content="Inhalt"/>
+            <TextBox Name="txtInhalt" Text="{Binding Inhalt}" KeyUp="txtInhalt_KeyUp" Margin="10"/>
+            <Button Name="btnBildmain" Content="Bild ändern"  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Width="100" Height="25" Click="MainBild_Click"/>
+            <Image Name="bildmain" Source="{Binding Bild}"  Width="40" Margin="0" Stretch="Uniform"  HorizontalAlignment="Center"/>
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10">
+                <Button Name="btnLöschen" Content="Löschen" Height="30" Width="50"  Click="btnLöschen_Click"/>
+                <Button Name="btnNeu" Content="Neu" Height="30" Width="50"  Click="btnNeu_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
